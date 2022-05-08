@@ -1,0 +1,128 @@
+html {
+    height: auto;
+}
+
+body {
+    background-color: #444;
+    padding: 1rem;
+    padding: 0;
+    height: 100%;
+}
+
+h1 {
+    font-weight: 600;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    padding: 1.5rem 0;
+}
+
+h2 {
+    font-weight: 600;
+    font-size: 1rem;
+    margin: 2rem auto;
+    text-align: center;
+}
+
+h3 {
+    font-weight: 600;
+    font-size: 1rem;
+    margin: 0.5rem auto;
+}
+
+hr {
+    margin: 0;
+}
+
+p {
+    font-weight: 400;
+    font-size: 0.9rem;
+    margin: auto;
+    padding: 0.8rem 0;
+}
+
+footer {
+    text-align: center;
+    color: #999;
+}
+
+
+/* containers */
+
+.pageContainer {
+    background-color: whitesmoke;
+    width: 60%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.titleContainer {
+    background-color: white;
+    padding: 0 2%;
+}
+
+.container {
+    padding: 0 15%;
+    font-size: 0.8rem;
+    font-weight: 400;
+}
+
+
+
+.row {
+    padding: 0.5rem 0;
+}
+
+.member4, .member5 {
+    display: None;
+}
+
+.descriptionOfNumber {
+    padding: 0.5rem;
+}
+
+.infoOfMembers {
+    margin-top: 4rem;
+}
+
+.challengeLink {
+    text-align: center;
+}
+
+.required {
+    color: #e03e2d;
+    padding: 0 0.2rem;
+}
+
+
+/* buttons */
+
+.reset {
+    color: gray;
+    float: right;
+}
+
+.submit {
+    text-align: center;
+    margin: 1.5rem auto;
+}
+
+
+/* Validation Check */
+
+label.error{
+    background: no-repeat url(../images/xmark-solid.svg);
+    background-position: right 6.5% bottom;
+    margin-left: .3em;
+    padding-right: 12%;
+    height: 16px;
+    text-align: right;
+}
+
+label.valid{
+    background: no-repeat url(../images/check-solid.svg);
+    display: block;
+    padding-left: 30px;
+    padding-right: initial;
+    width: 16px;
+    height: 16px
+}
