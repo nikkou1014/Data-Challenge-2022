@@ -1,63 +1,5 @@
-
-$('.numOfMembers input[type=radio][name=numOfMembers]').change(function () {
-    if (this.value == 1) {
-        $(".member1").show();
-
-        $(".member2").hide();
-        $(".member3").hide();
-        $(".member4").hide();
-        $(".member5").hide();
-    }
-    else if (this.value == 2) {
-        $(".member1").show();
-        $(".member2").show();
-
-        $(".member3").hide();
-        $(".member4").hide();
-        $(".member5").hide();
-    }
-    else if (this.value == 3) {
-        $(".member1").show();
-        $(".member2").show();
-        $(".member3").show();
-
-        $(".member4").hide();
-        $(".member5").hide();
-    }
-    else if (this.value == 4) {
-        $(".member1").show();
-
-        $(".member2").hide();
-        $(".member3").hide();
-        $(".member4").hide();
-        $(".member5").hide();
-    }
-    else if (this.value == 5) {
-        $(".member1").show();
-        $(".member2").show();
-        $(".member3").show();
-        $(".member4").show();
-
-        $(".member5").hide();
-    }
-});
-
-$('.reset').click(function () {
-    $('.numOfMembers input[type=radio][name=numOfMembers]').prop('checked', false);
-    $(".member4").hide();
-    $(".member5").hide();
-});
-
-jQuery.validator.setDefaults({
-    debug: true,
-    success: "valid"
-});
-
-$('#info').validate({
-    submitHandler: function (form) {
-        form.submit();
-    },
-    rules: {
+function get_rules(num) {
+    let rules = {
         teamContactEmail: {
             required: true,
             email: true
@@ -65,36 +7,65 @@ $('#info').validate({
         phoneNumber: {
             required: true,
             phoneUS: true
-        },
-        member1FirstName: {
+        }
+    }
+
+    for (let i = 1; i <= num; i++) {
+        rules['member' + i.toString() + 'FirstName'] = {
             required: true
-        },
-        member1LastName: {
+        };
+
+        rules['member' + i.toString() + 'LastName'] = {
             required: true
-        },
-        member1Email: {
-            required: true,
-            email: true
-        },
-        member2FirstName: {
-            required: true
-        },
-        member2LastName: {
-            required: true
-        },
-        member2Email: {
-            required: true,
-            email: true
-        },
-        member3FirstName: {
-            required: true
-        },
-        member3LastName: {
-            required: true
-        },
-        member3Email: {
+        };
+
+        rules['member' + i.toString() + 'Email'] = {
             required: true,
             email: true
         }
     }
+
+    return rules;
+}
+
+$(function onload() {
+
+    $('.numOfMembers input[type=radio][name=numOfMembers]').change(function () {
+        let num = parseInt(this.value, 10);
+
+        for (let i = 1; i <= num; i++) {
+            $("#member_box" + i.toString()).show();
+        }
+
+        for (let i = num + 1; i <= 5; i++) {
+            $("#member_box" + i.toString()).hide();
+        }
+
+        $('#info').validate({
+            submitHandler: function (form) {
+                form.submit();
+            },
+            rules: get_rules(this.value)
+        });
+    });
+
+    jQuery.validator.setDefaults({
+        debug: true,
+        success: "valid"
+    });
+
+    $('#info').validate({
+        submitHandler: function (form) {
+            form.submit();
+        },
+        rules: get_rules(3)
+    });
+
+    $('.reset').click(function () {
+        $('.numOfMembers input[type=radio][name=numOfMembers]').prop('checked', false);
+        $(".member4").hide();
+        $(".member5").hide();
+    });
+
+    $('#3Members').click();
 });
